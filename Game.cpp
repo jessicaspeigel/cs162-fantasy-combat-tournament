@@ -31,7 +31,7 @@ Game::Game() {
     charMenu.setPromptText("Select a character for player 1");
     p1Choice = charMenu.showMenu();
     // Create player1
-    Character* p1;
+    Character* p1 = nullptr;
     if (p1Choice == 1) {
         // Vampire
         p1 = new Vampire;
@@ -53,7 +53,7 @@ Game::Game() {
     charMenu.setPromptText("Select a character for player 2");
     p2Choice = charMenu.showMenu();
     // Create player2
-    Character* p2;
+    Character* p2 = nullptr;
     if (p2Choice == 1) {
         // Vampire
         p2 = new Vampire;
@@ -115,15 +115,15 @@ void Game::startGame() {
     // Initialize a flag to know if the game should keep going.
     bool everyoneAlive = true;
     // Clear cin
-    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    cin.clear();
+//    cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+//    cin.clear();
     do {
-        if (round > 0) {
-            // Pause between rounds
-            string tmp;
-            cout << "Press enter to run a new round" << endl;
-            getline(cin, tmp);
-        }
+//        if (round > 0) {
+//            // Pause between rounds
+//            string tmp;
+//            cout << "Press enter to run a new round" << endl;
+//            getline(cin, tmp);
+//        }
         // Run the round
         everyoneAlive = runRound();
     } while (everyoneAlive);
@@ -141,7 +141,7 @@ bool Game::runRound() {
     round++;
 
     // Print a separator
-    cout << "-------------------------------------------" << endl;
+//    cout << "-------------------------------------------" << endl;
 
     // Print what round it is
     cout << "Round " << round << endl << endl;

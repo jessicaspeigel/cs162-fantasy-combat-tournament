@@ -13,24 +13,23 @@
 #include "BlueMen.hpp"
 #include "Medusa.hpp"
 #include "HarryPotter.hpp"
-#include "Die.hpp"
 #include "Menu.hpp"
+#include "Queue.hpp"
 
 class Game {
     private:
-        Character* player1;
-        Character* player2;
-        void setPlayer1(Character *player);
-        void setPlayer2(Character *player);
+        Queue* team1;
+        Queue* team2;
+        Queue* losers;
+        int fight;
         int round;
         void startGame();
+        bool runFight();
         bool runRound();
 
     public:
         Game();
         ~Game();
-        Character* getPlayer1();
-        Character* getPlayer2();
 };
 
 #endif //CS162_FANTASY_COMBAT_GAME_GAME_HPP
