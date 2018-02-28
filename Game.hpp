@@ -15,6 +15,7 @@
 #include "HarryPotter.hpp"
 #include "Menu.hpp"
 #include "Queue.hpp"
+#include "InputValidation.hpp"
 
 class Game {
     private:

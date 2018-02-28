@@ -24,9 +24,9 @@ int main() {
     // Seed the random number generator
     srand(time(NULL));
     // Say hi to the user
-    cout << "Welcome to the fantasy combat game!" << endl;
+    cout << "Welcome to the fantasy combat tournament!" << endl;
     // Get the main menu ready
-    vector<string> mainMenuItems = {"Choose characters for combat", "Exit"};
+    vector<string> mainMenuItems = {"Play", "Exit"};
     Menu mainMenu(mainMenuItems);
     int menuChoice = 1;
     // Start the program
@@ -35,7 +35,7 @@ int main() {
         menuChoice = mainMenu.showMenu();
         if (menuChoice != 2) {
             // Start a new game
-            Game combatGame;
+            Game combatTournament;
 
             // Update the menu text once the game has run once
             mainMenuItems[0] = "Play again";

@@ -11,8 +11,9 @@ using std::cout;
 using std::endl;
 using std::string;
 
-Character::Character(std::string name, int armor, int strength, int numLives) {
-    this->name = name;
+Character::Character(std::string charType, int armor, int strength, int numLives) {
+    this->charType = charType;
+    this->name = charType;
     this->armor = armor;
     this->currentStrength = strength;
     this->startStrength = strength;
@@ -49,8 +50,8 @@ roll_t Character::getDefense() {
     return defenseRoll;
 }
 
-string Character::getName() {
-    return name;
+string Character::getType() {
+    return charType;
 }
 
 void Character::death() {
@@ -61,7 +62,7 @@ void Character::death() {
         isDead = true;
     } else {
         // Tell the user what happened and how many lives are left
-        cout << getName() << " has lost a life. They have " << (numLives - currentLife) << " life left." << endl;
+        cout << getType() << " has lost a life. They have " << (numLives - currentLife) << " life left." << endl;
         resetStrength();
     }
 }
@@ -72,4 +73,15 @@ bool Character::isAlive() {
 
 void Character::resetStrength() {
     setStrength(startStrength);
+}
+
+std::string Character::getName() {
+    return name;
+}
+
+void Character::setName(std::string name) {
+    // Only set the name if the string is more than 1 character
+    if (name.length() > 0) {
+        this->name = name;
+    }
 }

@@ -46,9 +46,9 @@ Barbarian::~Barbarian()
 
 int Barbarian::attack(Character *defender) {
     // Print out the attack information
-    cout << "Attacker type: " << getName() << endl;
-    cout << "Defender type: " << defender->getName() << ", Armor: " << defender->getArmor() << ", Strength: " << defender->getStrength() << endl;
-    cout << getName() << "'s attack dice roll: ";
+    cout << "Attacker charType: " << getType() << endl;
+    cout << "Defender charType: " << defender->getType() << ", Armor: " << defender->getArmor() << ", Strength: " << defender->getStrength() << endl;
+    cout << getType() << "'s attack dice roll: ";
 
     int attackTotal = 0;
     int currentRoll = 0;
@@ -63,7 +63,7 @@ int Barbarian::attack(Character *defender) {
 }
 
 void Barbarian::defend(int attackScore) {
-    cout << getName() << "'s defense dice roll: ";
+    cout << getType() << "'s defense dice roll: ";
     int defenseTotal = 0;
     int currentRoll = 0;
     for (int i = 0; i < defenseRoll.numDice; i++) {
@@ -80,6 +80,6 @@ void Barbarian::defend(int attackScore) {
     this->setStrength(newStrength);
 
     cout << "Total inflicted damage: " << damage << endl;
-    cout << this->getName() << "'s new strength: " << this->getStrength() << endl;
+    cout << this->getType() << "'s new strength: " << this->getStrength() << endl;
     cout << endl;
 }

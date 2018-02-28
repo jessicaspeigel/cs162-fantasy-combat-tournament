@@ -19,6 +19,7 @@ struct roll_t {
 
 class Character {
     protected:
+        std::string charType;
         std::string name;
         roll_t attackRoll;
         roll_t defenseRoll;
@@ -32,7 +33,7 @@ class Character {
         Die** defenseDice;
 
     public:
-        Character(std::string name, int armor = 0, int strength = 12, int numLives = 1);
+        Character(std::string charType, int armor = 0, int strength = 12, int numLives = 1);
         virtual ~Character();
         virtual int attack(Character *defender) = 0;
         virtual void defend(int attackScore) = 0;
@@ -44,7 +45,9 @@ class Character {
         bool isAlive();
         roll_t getAttack();
         roll_t getDefense();
+        std::string getType();
         std::string getName();
+        void setName(std::string name);
 
 };
 

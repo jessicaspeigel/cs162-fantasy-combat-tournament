@@ -45,9 +45,9 @@ Medusa::~Medusa()
 
 int Medusa::attack(Character *defender) {
     // Print out the attack information
-    cout << "Attacker type: " << getName() << endl;
-    cout << "Defender type: " << defender->getName() << ", Armor: " << defender->getArmor() << ", Strength: " << defender->getStrength() << endl;
-    cout << getName() << "'s attack dice roll: ";
+    cout << "Attacker charType: " << getType() << endl;
+    cout << "Defender charType: " << defender->getType() << ", Armor: " << defender->getArmor() << ", Strength: " << defender->getStrength() << endl;
+    cout << getType() << "'s attack dice roll: ";
 
     int attackTotal = 0;
     int currentRoll = 0;
@@ -60,7 +60,7 @@ int Medusa::attack(Character *defender) {
     cout << " for an attack total of " << attackTotal << endl;
     if (attackTotal == 12) {
         // Medusa's glare is activated
-        cout << "Glare activated! " << getName() << " petrifies " << defender->getName() << "." << endl;
+        cout << "Glare activated! " << getType() << " petrifies " << defender->getType() << "." << endl;
         // Sets the attack so high no one can counter it
         attackTotal = 10000;
     }
@@ -68,7 +68,7 @@ int Medusa::attack(Character *defender) {
 }
 
 void Medusa::defend(int attackScore) {
-    cout << getName() << "'s defense dice roll: ";
+    cout << getType() << "'s defense dice roll: ";
     int defenseTotal = 0;
     int currentRoll = 0;
     for (int i = 0; i < defenseRoll.numDice; i++) {
@@ -85,6 +85,6 @@ void Medusa::defend(int attackScore) {
     this->setStrength(newStrength);
 
     cout << "Total inflicted damage: " << damage << endl;
-    cout << this->getName() << "'s new strength: " << this->getStrength() << endl;
+    cout << this->getType() << "'s new strength: " << this->getStrength() << endl;
     cout << endl;
 }

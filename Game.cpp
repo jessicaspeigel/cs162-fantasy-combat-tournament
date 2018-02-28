@@ -23,57 +23,93 @@ using std::max;
 ****************************************************/
 
 Game::Game() {
-    // Default constructor prompts user to select characters
-    int p1Choice = 0, p2Choice = 0;
+    // Default constructor prompts user to create the teams
+    // Team 1
+    cout << "Team 1:" << endl;
+    int team1NumPlayers = getIntegerWithMin("How many fighters should Team 1 have? (Min. 1)", 1);
     vector<string> charMenuItems = {"Vampire", "Barbarian", "Blue Men", "Medusa", "Harry Potter"};
-    Menu charMenu(charMenuItems);
-    // Prompt for player 1
-    charMenu.setPromptText("Select a character for player 1");
-    p1Choice = charMenu.showMenu();
-    // Create player1
-    Character* p1 = nullptr;
-    if (p1Choice == 1) {
-        // Vampire
-        p1 = new Vampire;
-    } else if (p1Choice == 2) {
-        // Barbarian
-        p1 = new Barbarian;
-    } else if (p1Choice == 3) {
-        // Blue Men
-        p1 = new BlueMen;
-    } else if (p1Choice == 4) {
-        // Medusa
-        p1 = new Medusa;
-    } else if (p1Choice == 5) {
-        // Harry Potter
-        p1 = new HarryPotter;
+    Menu charMenu("Choose a character:", charMenuItems);
+    for (int i = 0; i < team1NumPlayers; i++) {
+        // Add a player
+        int charType = 0;
+        string name = "";
+        Character* player = nullptr;
+        charType = charMenu.showMenu();
+        if (charType == 1) {
+            // Vampire
+            player = new Vampire;
+        } else if (charType == 2) {
+            // Barbarian
+            player = new Barbarian;
+        } else if (charType == 3) {
+            // Blue Men
+            player = new BlueMen;
+        } else if (charType == 4) {
+            // Medusa
+            player = new Medusa;
+        } else if (charType == 5) {
+            // Harry Potter
+            player = new HarryPotter;
+        }
+        // Get a name
+        name = getString("Enter a name for your fighter:", 0);
+        player->setName(name);
+        team1->addBack(player);
     }
-    setPlayer1(p1);
-    // Prompt for player 2
-    charMenu.setPromptText("Select a character for player 2");
-    p2Choice = charMenu.showMenu();
-    // Create player2
-    Character* p2 = nullptr;
-    if (p2Choice == 1) {
-        // Vampire
-        p2 = new Vampire;
-    } else if (p2Choice == 2) {
-        // Barbarian
-        p2 = new Barbarian;
-    } else if (p2Choice == 3) {
-        // Blue Men
-        p2 = new BlueMen;
-    } else if (p2Choice == 4) {
-        // Medusa
-        p2 = new Medusa;
-    } else if (p2Choice == 5) {
-        // Harry Potter
-        p2 = new HarryPotter;
-    }
-    setPlayer2(p2);
-    // Start the game
-    startGame();
 }
+
+//Game::Game() {
+//    // Default constructor prompts user to select characters
+//    int p1Choice = 0, p2Choice = 0;
+//    vector<string> charMenuItems = {"Vampire", "Barbarian", "Blue Men", "Medusa", "Harry Potter"};
+//    Menu charMenu(charMenuItems);
+//    // Prompt for player 1
+//    charMenu.setPromptText("Select a character for player 1");
+//    p1Choice = charMenu.showMenu();
+//    // Create player1
+//    Character* p1 = nullptr;
+//    if (p1Choice == 1) {
+//        // Vampire
+//        p1 = new Vampire;
+//    } else if (p1Choice == 2) {
+//        // Barbarian
+//        p1 = new Barbarian;
+//    } else if (p1Choice == 3) {
+//        // Blue Men
+//        p1 = new BlueMen;
+//    } else if (p1Choice == 4) {
+//        // Medusa
+//        p1 = new Medusa;
+//    } else if (p1Choice == 5) {
+//        // Harry Potter
+//        p1 = new HarryPotter;
+//    }
+//    setPlayer1(p1);
+//    // Prompt for player 2
+//    charMenu.setPromptText("Select a character for player 2");
+//    p2Choice = charMenu.showMenu();
+//    // Create player2
+//    Character* p2 = nullptr;
+//    if (p2Choice == 1) {
+//        // Vampire
+//        p2 = new Vampire;
+//    } else if (p2Choice == 2) {
+//        // Barbarian
+//        p2 = new Barbarian;
+//    } else if (p2Choice == 3) {
+//        // Blue Men
+//        p2 = new BlueMen;
+//    } else if (p2Choice == 4) {
+//        // Medusa
+//        p2 = new Medusa;
+//    } else if (p2Choice == 5) {
+//        // Harry Potter
+//        p2 = new HarryPotter;
+//    }
+//    setPlayer2(p2);
+//    // Start the game
+//    startGame();
+//}
 
 /****************************************************
 ** DESTRUCTORS
