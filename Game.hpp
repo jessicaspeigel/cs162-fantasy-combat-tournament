@@ -22,10 +22,14 @@ class Game {
         Queue* team1;
         Queue* team2;
         Queue* losers;
+        Character* player1;
+        Character* player2;
         int fight;
         int round;
+        int team1Score;
+        int team2Score;
         void startGame();
-        bool runFight();
+        void runFight();
         bool runRound();
 
     public:
