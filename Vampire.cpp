@@ -45,9 +45,9 @@ Vampire::~Vampire()
 
 int Vampire::attack(Character *defender) {
     // Print out the attack information
-    cout << "Attacker charType: " << getType() << endl;
-    cout << "Defender charType: " << defender->getType() << ", Armor: " << defender->getArmor() << ", Strength: " << defender->getStrength() << endl;
-    cout << getType() << "'s attack dice roll: ";
+//    cout << "Attacker charType: " << getType() << endl;
+//    cout << "Defender charType: " << defender->getType() << ", Armor: " << defender->getArmor() << ", Strength: " << defender->getStrength() << endl;
+//    cout << getType() << "'s attack dice roll: ";
 
     int attackTotal = 0;
     int currentRoll = 0;
@@ -55,9 +55,9 @@ int Vampire::attack(Character *defender) {
         currentRoll  = attackDice[i]->roll();
         attackTotal += currentRoll;
         // Print the roll for the current die
-        cout << " die " << (i + 1) << " (" << currentRoll << ")";
+//        cout << " die " << (i + 1) << " (" << currentRoll << ")";
     }
-    cout << " for an attack total of " << attackTotal << endl;
+//    cout << " for an attack total of " << attackTotal << endl;
     return attackTotal;
 }
 
@@ -66,26 +66,26 @@ void Vampire::defend(int attackScore) {
     int charmed = rand() % 2;
     if (charmed == 1) {
         // The attacker didn't attack.
-        cout << getType() << " charmed his opponent into not attacking! No damage inflicted." << endl;
+//        cout << getType() << " charmed his opponent into not attacking! No damage inflicted." << endl;
     } else {
-        cout << getType() << "'s defense dice roll: ";
+//        cout << getType() << "'s defense dice roll: ";
         int defenseTotal = 0;
         int currentRoll = 0;
         for (int i = 0; i < defenseRoll.numDice; i++) {
             currentRoll  = defenseDice[i]->roll();
             defenseTotal += currentRoll;
             // Print the roll for the current die
-            cout << " die " << (i + 1) << " (" << currentRoll << ")";
+//            cout << " die " << (i + 1) << " (" << currentRoll << ")";
         }
-        cout << " for a defense total of " << defenseTotal << endl;
+//        cout << " for a defense total of " << defenseTotal << endl;
 
         // Calculate damage and adjust strength
         int damage = max(attackScore - defenseTotal - this->getArmor(), 0);
         int newStrength = this->getStrength() - damage;
         this->setStrength(newStrength);
 
-        cout << "Total inflicted damage: " << damage << endl;
-        cout << this->getType() << "'s new strength: " << this->getStrength() << endl;
+//        cout << "Total inflicted damage: " << damage << endl;
+//        cout << this->getType() << "'s new strength: " << this->getStrength() << endl;
     }
-    cout << endl;
+//    cout << endl;
 }

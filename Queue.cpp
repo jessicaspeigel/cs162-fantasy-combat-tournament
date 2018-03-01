@@ -28,15 +28,18 @@ Queue::~Queue() {
 ****************************************************/
 
 void Queue::clearList() {
-    QueueNode* n = getHead();
-    do {
-        //Pointer to node to be deleted
-        QueueNode* garbage = n;
-        // Move on to the next
-        n = n->next;
-        // Delete the garbage node
-        delete garbage;
-    } while(n != nullptr && n != getHead());
+    // Only delete shit if there's shit to delete
+    if (!isEmpty()) {
+        QueueNode* n = getHead();
+        do {
+            //Pointer to node to be deleted
+            QueueNode* garbage = n;
+            // Move on to the next
+            n = n->next;
+            // Delete the garbage node
+            delete garbage;
+        } while(n != nullptr && n != getHead());
+    }
 }
 
 /****************************************************
@@ -104,7 +107,7 @@ bool Queue::removeFront() {
 
 void Queue::printItem(QueueNode *item) {
     if (item != nullptr) {
-        cout << item->player << " ";
+        cout << item->player->getName() << endl;
     }
 }
 

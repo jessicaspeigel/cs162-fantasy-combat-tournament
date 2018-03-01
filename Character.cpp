@@ -62,7 +62,7 @@ void Character::death() {
         isDead = true;
     } else {
         // Tell the user what happened and how many lives are left
-        cout << getType() << " has lost a life. They have " << (numLives - currentLife) << " life left." << endl;
+//        cout << getType() << " has lost a life. They have " << (numLives - currentLife) << " life left." << endl;
         resetStrength();
     }
 }
