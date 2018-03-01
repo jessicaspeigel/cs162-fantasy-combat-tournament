@@ -96,59 +96,6 @@ Game::Game() {
     startGame();
 }
 
-//Game::Game() {
-//    // Default constructor prompts user to select characters
-//    int p1Choice = 0, p2Choice = 0;
-//    vector<string> charMenuItems = {"Vampire", "Barbarian", "Blue Men", "Medusa", "Harry Potter"};
-//    Menu charMenu(charMenuItems);
-//    // Prompt for player 1
-//    charMenu.setPromptText("Select a character for player 1");
-//    p1Choice = charMenu.showMenu();
-//    // Create player1
-//    Character* p1 = nullptr;
-//    if (p1Choice == 1) {
-//        // Vampire
-//        p1 = new Vampire;
-//    } else if (p1Choice == 2) {
-//        // Barbarian
-//        p1 = new Barbarian;
-//    } else if (p1Choice == 3) {
-//        // Blue Men
-//        p1 = new BlueMen;
-//    } else if (p1Choice == 4) {
-//        // Medusa
-//        p1 = new Medusa;
-//    } else if (p1Choice == 5) {
-//        // Harry Potter
-//        p1 = new HarryPotter;
-//    }
-//    setPlayer1(p1);
-//    // Prompt for player 2
-//    charMenu.setPromptText("Select a character for player 2");
-//    p2Choice = charMenu.showMenu();
-//    // Create player2
-//    Character* p2 = nullptr;
-//    if (p2Choice == 1) {
-//        // Vampire
-//        p2 = new Vampire;
-//    } else if (p2Choice == 2) {
-//        // Barbarian
-//        p2 = new Barbarian;
-//    } else if (p2Choice == 3) {
-//        // Blue Men
-//        p2 = new BlueMen;
-//    } else if (p2Choice == 4) {
-//        // Medusa
-//        p2 = new Medusa;
-//    } else if (p2Choice == 5) {
-//        // Harry Potter
-//        p2 = new HarryPotter;
-//    }
-//    setPlayer2(p2);
-//    // Start the game
-//    startGame();
-//}
-
 /****************************************************
 ** DESTRUCTORS
 ****************************************************/
@@ -291,23 +238,23 @@ bool Game::runRound() {
     }
 
     // If someone is dead, take care of it
-//    if (!everyoneAlive) {
-//        // Figure out who died
-//        if (player1->getStrength() <= 0) {
-//            // Put player 1 in the loser pile
-//            losers->addBack(team1->getFront());
-//            // Heal player 2 and put them in the back of the queue
-//            team2->addBack(team2->getFront());
-//        } else if (player2->getStrength() <= 0) {
-//            // Put player 2 in the loser pile
-//            losers->addBack(team2->getFront());
-//            // Heal player 1 and put them in the back of the queue
-//            team1->addBack(team1->getFront());
-//        }
-//        // Remove the front item from each queue
-//        team1->removeFront();
-//        team2->removeFront();
-//    }
+    if (!everyoneAlive) {
+        // Figure out who died
+        if (player1->getStrength() <= 0) {
+            // Put player 1 in the loser pile
+            losers->addBack(player1);
+            // Heal player 2 and put them in the back of the queue
+            team2->addBack(player2);
+        } else if (player2->getStrength() <= 0) {
+            // Put player 2 in the loser pile
+            losers->addBack(player2);
+            // Heal player 1 and put them in the back of the queue
+            team1->addBack(player1);
+        }
+        // Remove the front item from each queue
+        team1->removeFront();
+        team2->removeFront();
+    }
 
     // Print a separator
     cout << "-------------------------------------------" << endl << endl;
