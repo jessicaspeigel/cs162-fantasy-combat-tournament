@@ -62,7 +62,7 @@ void Character::death() {
         isDead = true;
     } else {
         // Tell the user what happened and how many lives are left
-//        cout << getType() << " has lost a life. They have " << (numLives - currentLife) << " life left." << endl;
+        cout << getType() << " has lost a life. They have " << (numLives - currentLife) << " life left." << endl;
         resetStrength();
     }
 }
@@ -92,10 +92,10 @@ int Character::getStrengthCapacity() {
 
 void Character::recover() {
     // Recovers the character by a random amount
-    int recoveryAmount = rand() % (getStrengthCapacity() - getStrength());
-    // Set the strength
-    setStrength(getStrength() + recoveryAmount);
+    int rndRecoveryAmount = rand() % (getStrengthCapacity() - getStrength()) + 1;
     // Print some shit
-    cout << this->getName() << " is recovered!" << endl;
-    cout << "Strength capacity: " << getStrengthCapacity() << " / Current strength: " << getStrength() << " / Random recovery amount: " << recoveryAmount << endl;
+//    cout << this->getName() << " is recovered!" << endl;
+//    cout << "Strength capacity: " << getStrengthCapacity() << " / Current strength: " << getStrength() << " / Random recovery amount: " << rndRecoveryAmount << endl;
+    // Set the strength
+    setStrength(getStrength() + rndRecoveryAmount);
 }

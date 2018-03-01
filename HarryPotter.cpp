@@ -87,4 +87,5 @@ void HarryPotter::resetStrength() {
     // Harry Potter's strength is reset to 20 when he dies
     startStrength = 20;
     setStrength(startStrength);
+//    cout << "Harry Potter activates Hogwarts and resets strength to 20!" << endl;
 }
