@@ -1,6 +1,6 @@
 
-output: main.o Menu.o InputValidation.o Queue.o Game.o Die.o Character.o Vampire.o Barbarian.o BlueMen.o Medusa.o HarryPotter.o
-	g++ -std=c++0x -g -Wall -pedantic-errors main.o Menu.o InputValidation.o Queue.o Game.o Die.o Character.o Vampire.o Barbarian.o BlueMen.o Medusa.o HarryPotter.o -o project4
+output: main.o Menu.o InputValidation.o Queue.o QueueNode.o Game.o Die.o Character.o Vampire.o Barbarian.o BlueMen.o Medusa.o HarryPotter.o
+	g++ -std=c++0x -g -Wall -pedantic-errors main.o Menu.o InputValidation.o Queue.o QueueNode.o Game.o Die.o Character.o Vampire.o Barbarian.o BlueMen.o Medusa.o HarryPotter.o -o project4
 
 main.o: main.cpp
 	g++ -std=c++0x -g -Wall -pedantic-errors -c main.cpp
@@ -10,6 +10,9 @@ Menu.o: Menu.cpp
 
 Queue.o: Queue.cpp
 	g++ -std=c++0x -g -Wall -pedantic-errors -c Queue.cpp
+
+QueueNode.o: QueueNode.cpp
+	g++ -std=c++0x -g -Wall -pedantic-errors -c QueueNode.cpp
 
 InputValidation.o: InputValidation.cpp
 	g++ -std=c++0x -g -Wall -pedantic-errors -c InputValidation.cpp

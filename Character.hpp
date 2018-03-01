@@ -42,6 +42,8 @@ class Character {
         virtual void resetStrength();
         int getArmor();
         int getStrength();
+        int getStrengthCapacity();
+        void recover();
         bool isAlive();
         roll_t getAttack();
         roll_t getDefense();

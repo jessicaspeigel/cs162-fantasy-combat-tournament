@@ -26,12 +26,12 @@ Game::Game() {
     // Default constructor sets up teams
     vector<string> charMenuItems = {"Vampire", "Barbarian", "Blue Men", "Medusa", "Harry Potter"};
     Menu charMenu("Choose a character:", charMenuItems);
+    // Create a character pointer to hold the characters
+    playerPtr = nullptr;
     // Create Team 1
     team1 = new Queue;
     team1Score = 0;
     cout << "Team 1:" << endl;
-    // Create a character pointer to hold the characters
-    Character* t1PlayerPtr = nullptr;
     int team1NumPlayers = getIntegerWithMin("How many fighters should Team 1 have? (Min. 1)", 1);
     for (int i = 0; i < team1NumPlayers; i++) {
         // Add a player
@@ -40,33 +40,29 @@ Game::Game() {
         charType = charMenu.showMenu();
         if (charType == 1) {
             // Vampire
-            t1PlayerPtr = new Vampire;
+            playerPtr = new Vampire;
         } else if (charType == 2) {
             // Barbarian
-            t1PlayerPtr = new Barbarian;
+            playerPtr = new Barbarian;
         } else if (charType == 3) {
             // Blue Men
-            t1PlayerPtr = new BlueMen;
+            playerPtr = new BlueMen;
         } else if (charType == 4) {
             // Medusa
-            t1PlayerPtr = new Medusa;
+            playerPtr = new Medusa;
         } else if (charType == 5) {
             // Harry Potter
-            t1PlayerPtr = new HarryPotter;
+            playerPtr = new HarryPotter;
         }
         // Get a name
         name = getString("Enter a name for your fighter:", 0);
-        t1PlayerPtr->setName(name);
-        team1->addBack(t1PlayerPtr);
+        playerPtr->setName(name);
+        team1->addBack(playerPtr);
     }
-    // Delete the player pointer
-    delete t1PlayerPtr;
     // Create Team 2
     team2 = new Queue;
     team2Score = 0;
     cout << "Team 2:" << endl;
-    // Create a character pointer to hold the characters
-    Character* t2PlayerPtr = nullptr;
     int team2NumPlayers = getIntegerWithMin("How many fighters should Team 2 have? (Min. 1)", 1);
     for (int i = 0; i < team2NumPlayers; i++) {
         // Add a player
@@ -75,112 +71,30 @@ Game::Game() {
         charType = charMenu.showMenu();
         if (charType == 1) {
             // Vampire
-            t2PlayerPtr = new Vampire;
+            playerPtr = new Vampire;
         } else if (charType == 2) {
             // Barbarian
-            t2PlayerPtr = new Barbarian;
+            playerPtr = new Barbarian;
         } else if (charType == 3) {
             // Blue Men
-            t2PlayerPtr = new BlueMen;
+            playerPtr = new BlueMen;
         } else if (charType == 4) {
             // Medusa
-            t2PlayerPtr = new Medusa;
+            playerPtr = new Medusa;
         } else if (charType == 5) {
             // Harry Potter
-            t2PlayerPtr = new HarryPotter;
+            playerPtr = new HarryPotter;
         }
         // Get a name
         name = getString("Enter a name for your fighter:", 0);
-        t2PlayerPtr->setName(name);
-        team2->addBack(t2PlayerPtr);
+        playerPtr->setName(name);
+        team2->addBack(playerPtr);
     }
-    // Delete the player pointer
-    delete t2PlayerPtr;
     // Create the loser queue
     losers = new Queue;
     // Start the game
     startGame();
 }
-
-//Game::Game() {
-//    // Default constructor sets up teams
-//    vector<string> charMenuItems = {"Vampire", "Barbarian", "Blue Men", "Medusa", "Harry Potter"};
-//    Menu charMenu("Choose a character:", charMenuItems);
-//    // Create Team 1
-//    team1 = new Queue;
-//    team1Score = 0;
-//    cout << "Team 1:" << endl;
-//    // Create a character pointer to hold the characters
-//    Character* t1PlayerPtr = nullptr;
-//    int team1NumPlayers = getIntegerWithMin("How many fighters should Team 1 have? (Min. 1)", 1);
-//    for (int i = 0; i < team1NumPlayers; i++) {
-//        // Add a player
-//        int charType = 0;
-//        string name = "";
-//        charType = charMenu.showMenu();
-//        if (charType == 1) {
-//            // Vampire
-//            t1PlayerPtr = new Vampire;
-//        } else if (charType == 2) {
-//            // Barbarian
-//            t1PlayerPtr = new Barbarian;
-//        } else if (charType == 3) {
-//            // Blue Men
-//            t1PlayerPtr = new BlueMen;
-//        } else if (charType == 4) {
-//            // Medusa
-//            t1PlayerPtr = new Medusa;
-//        } else if (charType == 5) {
-//            // Harry Potter
-//            t1PlayerPtr = new HarryPotter;
-//        }
-//        // Get a name
-//        name = getString("Enter a name for your fighter:", 0);
-//        t1PlayerPtr->setName(name);
-//        team1->addBack(t1PlayerPtr);
-//    }
-//    // Delete the player pointer
-//    //delete t1PlayerPtr;
-//    // Create Team 2
-//    team2 = new Queue;
-//    team2Score = 0;
-//    cout << "Team 2:" << endl;
-//    // Create a character pointer to hold the characters
-//    Character* t2PlayerPtr = nullptr;
-//    int team2NumPlayers = getIntegerWithMin("How many fighters should Team 2 have? (Min. 1)", 1);
-//    for (int i = 0; i < team2NumPlayers; i++) {
-//        // Add a player
-//        int charType = 0;
-//        string name = "";
-//        charType = charMenu.showMenu();
-//        if (charType == 1) {
-//            // Vampire
-//            t2PlayerPtr = new Vampire;
-//        } else if (charType == 2) {
-//            // Barbarian
-//            t2PlayerPtr = new Barbarian;
-//        } else if (charType == 3) {
-//            // Blue Men
-//            t2PlayerPtr = new BlueMen;
-//        } else if (charType == 4) {
-//            // Medusa
-//            t2PlayerPtr = new Medusa;
-//        } else if (charType == 5) {
-//            // Harry Potter
-//            t2PlayerPtr = new HarryPotter;
-//        }
-//        // Get a name
-//        name = getString("Enter a name for your fighter:", 0);
-//        t2PlayerPtr->setName(name);
-//        team2->addBack(t2PlayerPtr);
-//    }
-//    // Delete the player pointer
-//    //delete t2PlayerPtr;
-//    // Create the loser queue
-//    losers = new Queue;
-//    // Start the game
-//    startGame();
-//}
 
 /****************************************************
 ** DESTRUCTORS
@@ -191,12 +105,8 @@ Game::~Game() {
     delete team1;
     delete team2;
     delete losers;
+    delete playerPtr;
 }
-
-/****************************************************
-** GETTERS / SETTERS
-****************************************************/
-
 
 /****************************************************
 ** Description: starts the game
@@ -204,13 +114,42 @@ Game::~Game() {
 
 void Game::startGame() {
     // Initialize the fight number to 0
-    fight = 0;
+    fight = 1;
     do {
         // Run the next fight
         runFight();
         // Increment the fight counter
         fight++;
     } while (!team1->isEmpty() && !team2->isEmpty());
+    endGame();
+}
+
+/****************************************************
+** Description: ends the game
+****************************************************/
+
+void Game::endGame() {
+    // Print a separator
+    cout << "-------------------------------------------" << endl;
+    cout << "Tournament over! Scores: " << endl;
+    cout << "Team 1: " << team1Score << endl;
+    cout << "Team 2: " << team2Score << endl;
+    if (team1Score == team2Score) {
+        cout << "It's a tie!" << endl;
+    } else if (team1Score > team2Score) {
+        cout << "Team 1 wins!" << endl;
+    } else if (team2Score > team1Score) {
+        cout << "Team 2 wins!" << endl;
+    }
+    // Get the menu ready
+    vector<string> endMenuItems = {"Yes", "No"};
+    Menu endMenu("Would you like to see the list of losers?", endMenuItems);
+    int menuChoice = endMenu.showMenu();
+    if (menuChoice == 1) {
+        // Print the list of losers
+        cout << "Players currently in the loser stack:" << endl;
+        losers->printList();
+    }
 }
 
 /****************************************************
@@ -240,16 +179,13 @@ void Game::runFight() {
     } while (everyoneAlive);
 
     // Print a separator
-    cout << "-------------------------------------------" << endl;
-    cout << "Team 1 players:" << endl;
-    team1->printList();
-    cout << endl;
-    cout << "Team 2 players:" << endl;
-    team2->printList();
-    cout << endl;
-    cout << "Players currently in the loser stack:" << endl;
-    losers->printList();
-    cout << "-------------------------------------------" << endl;
+//    cout << "-------------------------------------------" << endl;
+//    cout << "Team 1 players:" << endl;
+//    team1->printList();
+//    cout << "Team 2 players:" << endl;
+//    team2->printList();
+//    cout << "Players currently in the loser stack:" << endl;
+//    losers->printList();
 }
 
 /****************************************************
@@ -303,6 +239,7 @@ bool Game::runRound() {
             // Put player 2 in the loser pile
             losers->addBack(player2);
             // Heal player 1 and put them in the back of the queue
+            player1->recover();
             team1->addBack(player1);
             // Increment the team's score
             team1Score++;
@@ -312,6 +249,7 @@ bool Game::runRound() {
             // Put player 1 in the loser pile
             losers->addBack(player1);
             // Heal player 2 and put them in the back of the queue
+            player2->recover();
             team2->addBack(player2);
             // Increment the team's score
             team2Score++;

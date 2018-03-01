@@ -85,3 +85,18 @@ void Character::setName(std::string name) {
         this->name = name;
     }
 }
+
+int Character::getStrengthCapacity() {
+    return startStrength;
+}
+
+void Character::recover() {
+    // Recovers the character by a random amount
+    // I AM DUMB WHY THE FUCK ISN'T THIS WORKING
+//    int recoveryAmount = rand() % (getStrengthCapacity() - getStrength());
+//    // Set the strength
+//    setStrength(getStrength() + recoveryAmount);
+//    // Print some shit
+//    cout << this->getName() << " is recovered!" << endl;
+//    cout << "Strength capacity: " << getStrengthCapacity() << " / Current strength: " << getStrength() << " / Random recovery amount: " << recoveryAmount << endl;
+}

@@ -9,21 +9,7 @@
 #define CS162_LAB_7_CIRCULARLINKEDLIST
 
 #include "Character.hpp"
-
-// struct for node
-struct QueueNode
-{
-    Character* player;
-    QueueNode* next;
-    QueueNode* prev;
-    // Define a constructor
-    QueueNode(Character* playerPtr, QueueNode* n = nullptr, QueueNode* p = nullptr)
-    {
-        player = playerPtr;
-        next = n;
-        prev = p;
-    }
-};
+#include "QueueNode.hpp"
 
 class Queue {
 

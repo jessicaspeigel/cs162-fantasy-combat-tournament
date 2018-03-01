@@ -24,6 +24,7 @@ class Game {
         Queue* losers;
         Character* player1;
         Character* player2;
+        Character* playerPtr;
         int fight;
         int round;
         int team1Score;
@@ -31,6 +32,7 @@ class Game {
         void startGame();
         void runFight();
         bool runRound();
+        void endGame();
 
     public:
         Game();

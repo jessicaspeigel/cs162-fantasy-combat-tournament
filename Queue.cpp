@@ -16,7 +16,7 @@ using std::endl;
 ****************************************************/
 
 Queue::Queue() {
-    head = nullptr;
+    setHead(nullptr);
 }
 
 Queue::~Queue() {
@@ -35,7 +35,7 @@ void Queue::clearList() {
             //Pointer to node to be deleted
             QueueNode* garbage = n;
             // Move on to the next
-            n = n->next;
+            n = n->getNext();
             // Delete the garbage node
             delete garbage;
         } while(n != nullptr && n != getHead());
@@ -57,15 +57,15 @@ void Queue::addBack(Character* playerPtr) {
         // Otherwise, add the new node to the back of the list
         QueueNode* h = getHead();
         // Set the node's next to the current head
-        n->next = h;
+        n->setNext(h);
         // Define a pointer the current back of the queue
-        QueueNode *oldBack = h->prev;
+        QueueNode *oldBack = h->getPrev();
         // Set the node's prev to the current back
-        n->prev = oldBack;
+        n->setPrev(oldBack);
         // Set the old back's next to the new node
-        oldBack->next = n;
+        oldBack->setNext(n);
         // Update the head node's prev
-        h->prev = n;
+        h->setPrev(n);
     }
 }
 
@@ -80,13 +80,13 @@ bool Queue::removeFront() {
     if (!isEmpty()) {
         QueueNode* h = getHead();
         QueueNode* newHead = nullptr;
-        newHead = h->next;
+        newHead = h->getNext();
         if (newHead != h) {
             // If this isn't the last item in the list
-            newHead->prev = h->prev;
+            newHead->setPrev(h->getPrev());
             // Set the last item's next to the new head (if there's more than one item in the queue)
-            QueueNode* l = head->prev;
-            l->next = newHead;
+            QueueNode* l = h->getPrev();
+            l->setNext(newHead);
             // We don't call setHead here, we set the head directly
             head = newHead;
         } else {
@@ -107,7 +107,7 @@ bool Queue::removeFront() {
 
 void Queue::printItem(QueueNode *item) {
     if (item != nullptr) {
-        cout << item->player->getName() << endl;
+        cout << item->getPlayer()->getName() << endl;
     }
 }
 
@@ -118,14 +118,14 @@ void Queue::printItem(QueueNode *item) {
 void Queue::printList() {
     // Print a message if the list is empty
     if (isEmpty()) {
-        cout << "This queue is empty." << endl;
+        cout << "This queue is empty." << endl << endl;
     } else {
         QueueNode* n = getHead();
         do {
             // Print the value
             printItem(n);
             // Move on to the next
-            n = n->next;
+            n = n->getNext();
         } while(n != getHead());
         cout << endl;
     }
@@ -150,14 +150,14 @@ void Queue::setHead(QueueNode *n) {
     if (n != nullptr) {
         if (isEmpty()) {
             // If the list is previously empty, point everything to the head
-            n->prev = n;
-            n->next = n;
+            n->setPrev(n);
+            n->setNext(n);
         } else {
             // Set next of the new head to the old head if one exists
-            n->next = head;
-            n->prev = head->prev;
+            n->setNext(head);
+            n->setPrev(head->getPrev());
             // Set prev of the old head to n
-            head->prev = n;
+            head->setPrev(n);
         }
     }
     // Set the new head
@@ -183,7 +183,7 @@ bool Queue::isEmpty() {
 Character* Queue::getFront() {
     Character* result = nullptr;
     if (!isEmpty()) {
-        result = getHead()->player;
+        result = getHead()->getPlayer();
     }
     return result;
 }
