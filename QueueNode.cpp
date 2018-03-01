@@ -18,6 +18,12 @@ QueueNode::QueueNode(Character* player) {
     setPrev(nullptr);
 }
 
+QueueNode::QueueNode() {
+    setPlayer(nullptr);
+    setNext(nullptr);
+    setPrev(nullptr);
+}
+
 Character* QueueNode::getPlayer() {
     return player;
 }

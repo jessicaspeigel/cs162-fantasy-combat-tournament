@@ -26,69 +26,69 @@ Game::Game() {
     // Default constructor sets up teams
     vector<string> charMenuItems = {"Vampire", "Barbarian", "Blue Men", "Medusa", "Harry Potter"};
     Menu charMenu("Choose a character:", charMenuItems);
-    // Create a character pointer to hold the characters
-    playerPtr = nullptr;
     // Create Team 1
     team1 = new Queue;
     team1Score = 0;
     cout << "Team 1:" << endl;
     int team1NumPlayers = getIntegerWithMin("How many fighters should Team 1 have? (Min. 1)", 1);
+    // First add the players to the queue before actually setting their types
     for (int i = 0; i < team1NumPlayers; i++) {
-        // Add a player
+        QueueNode* n = team1->addBack(nullptr);
+        // Set the player to the appropriate type
         int charType = 0;
         string name = "";
         charType = charMenu.showMenu();
         if (charType == 1) {
             // Vampire
-            playerPtr = new Vampire;
+            n->setPlayer(new Vampire);
         } else if (charType == 2) {
             // Barbarian
-            playerPtr = new Barbarian;
+            n->setPlayer(new Barbarian);
         } else if (charType == 3) {
             // Blue Men
-            playerPtr = new BlueMen;
+            n->setPlayer(new BlueMen);
         } else if (charType == 4) {
             // Medusa
-            playerPtr = new Medusa;
+            n->setPlayer(new Medusa);
         } else if (charType == 5) {
             // Harry Potter
-            playerPtr = new HarryPotter;
+            n->setPlayer(new HarryPotter);
         }
         // Get a name
         name = getString("Enter a name for your fighter:", 0);
-        playerPtr->setName(name);
-        team1->addBack(playerPtr);
+        n->getPlayer()->setName(name);
     }
     // Create Team 2
     team2 = new Queue;
     team2Score = 0;
     cout << "Team 2:" << endl;
     int team2NumPlayers = getIntegerWithMin("How many fighters should Team 2 have? (Min. 1)", 1);
+    // First add the players to the queue before actually setting their types
     for (int i = 0; i < team2NumPlayers; i++) {
-        // Add a player
+        QueueNode* n = team2->addBack(nullptr);
+        // Set the player to the appropriate type
         int charType = 0;
         string name = "";
         charType = charMenu.showMenu();
         if (charType == 1) {
             // Vampire
-            playerPtr = new Vampire;
+            n->setPlayer(new Vampire);
         } else if (charType == 2) {
             // Barbarian
-            playerPtr = new Barbarian;
+            n->setPlayer(new Barbarian);
         } else if (charType == 3) {
             // Blue Men
-            playerPtr = new BlueMen;
+            n->setPlayer(new BlueMen);
         } else if (charType == 4) {
             // Medusa
-            playerPtr = new Medusa;
+            n->setPlayer(new Medusa);
         } else if (charType == 5) {
             // Harry Potter
-            playerPtr = new HarryPotter;
+            n->setPlayer(new HarryPotter);
         }
         // Get a name
         name = getString("Enter a name for your fighter:", 0);
-        playerPtr->setName(name);
-        team2->addBack(playerPtr);
+        n->getPlayer()->setName(name);
     }
     // Create the loser queue
     losers = new Queue;
@@ -105,7 +105,6 @@ Game::~Game() {
     delete team1;
     delete team2;
     delete losers;
-    delete playerPtr;
 }
 
 /****************************************************

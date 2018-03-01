@@ -36,6 +36,10 @@ void Queue::clearList() {
             QueueNode* garbage = n;
             // Move on to the next
             n = n->getNext();
+            // Delete the garbage node's player if it exists
+            if (garbage->getPlayer() != nullptr) {
+                delete garbage->getPlayer();
+            }
             // Delete the garbage node
             delete garbage;
         } while(n != nullptr && n != getHead());
@@ -47,8 +51,8 @@ void Queue::clearList() {
 ** queue.
 ****************************************************/
 
-void Queue::addBack(Character* playerPtr) {
-    // This constructor instantiates with next and prev set to nullptr
+QueueNode * Queue::addBack(Character *playerPtr) {
+    // This constructor instantiates with next and prev set to nullptr. playerPtr can be null also.
     QueueNode* n = new QueueNode(playerPtr);
     // Set the head if none exists
     if (isEmpty()) {
@@ -67,6 +71,7 @@ void Queue::addBack(Character* playerPtr) {
         // Update the head node's prev
         h->setPrev(n);
     }
+    return n;
 }
 
 /****************************************************

@@ -19,6 +19,7 @@ private:
 public:
     QueueNode(Character* player, QueueNode* next, QueueNode* prev);
     QueueNode(Character* player);
+    QueueNode();
     Character* getPlayer();
     void setPlayer(Character* player);
     QueueNode* getNext();

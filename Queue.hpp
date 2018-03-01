@@ -20,7 +20,7 @@ private:
 public:
     Queue();
     ~Queue();
-    void addBack(Character* playerPtr);
+    QueueNode* addBack(Character *playerPtr = nullptr);
     bool removeFront();
     void printItem(QueueNode* item);
     void printList();
